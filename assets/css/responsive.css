@@ -1,0 +1,145 @@
+/* Responsive media queries */
+
+@media (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .slots-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .sounds-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .generator-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-3, .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Navbar collapse */
+    .menu-toggle {
+        display: block;
+    }
+    
+    .navbar-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #050807;
+        border-bottom: 1px solid var(--border-green);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        z-index: 99;
+    }
+    
+    .navbar-links.show {
+        display: flex;
+    }
+    
+    .navbar-actions {
+        margin-left: auto;
+        margin-right: 15px;
+    }
+    
+    /* Music player adaptations */
+    .player-track-info {
+        width: 40%;
+    }
+    
+    .player-controls-wrapper {
+        width: 60%;
+    }
+    
+    .player-right-controls {
+        display: none; /* Hide volume and wave animation on mobile to save space */
+    }
+    
+    .player-progress-area span {
+        font-size: 0.7rem;
+    }
+    
+    /* Beatmaker adaptations */
+    .slots-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .sounds-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .palette-tab {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .slots-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sounds-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .player-track-cover {
+        display: none; /* Hide cover image on very small screens */
+    }
+    
+    .player-track-info {
+        width: 50%;
+    }
+    
+    .player-controls-wrapper {
+        width: 50%;
+    }
+    
+    .player-controls {
+        gap: 12px;
+    }
+    
+    .control-btn.play-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .beatmaker-controls-bar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+        text-align: center;
+    }
+    
+    .beatmaker-btn-group {
+        justify-content: center;
+    }
+}
