@@ -78,8 +78,6 @@ MusicAI/
    * `database/sample_data.sql` (Dữ liệu mẫu thành viên và bài hát)
 4. Mở file `config/database.php` và điều chỉnh lại cấu hình tài khoản kết nối MySQL (username, password) nếu có thay đổi trong XAMPP của bạn.
 
-> [!NOTE]
-> **Chế độ Dự Phòng (Demo Mode)**: Nếu bạn chưa import cơ sở dữ liệu, website vẫn hoạt động bình thường nhờ cơ chế tự động Fallback nạp toàn bộ danh sách bài hát tĩnh, đồng thời lưu trữ các bài hát AI tự tạo và bản Beat Mix vào session để thuận tiện chạy thử nghiệm nhanh.
 
 ### Bước 3: Đăng nhập Tài khoản Thử nghiệm
 Hệ thống đã có sẵn 2 tài khoản thử nghiệm với mật khẩu tương ứng:
