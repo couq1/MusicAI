@@ -5,21 +5,21 @@
     --bg-soft: #07130f;
     --bg-card: rgba(255, 255, 255, 0.06);
     --bg-card-hover: rgba(255, 255, 255, 0.1);
-    
+
     --green-main: #00ff88;
     --green-hover: #00dd77;
     --green-dark: #0d3b2e;
     --green-glow: rgba(0, 255, 136, 0.35);
-    
+
     --text-main: #f4fff9;
     --text-muted: #8da99a;
-    
+
     --border-green: rgba(0, 255, 136, 0.18);
     --border-light: rgba(255, 255, 255, 0.08);
-    
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    
+
+    --font-heading: 'Be Vietnam Pro', sans-serif;
+    --font-body: 'Be Vietnam Pro', sans-serif;
+
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
@@ -44,20 +44,28 @@ body {
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--bg-main);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--green-dark);
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--green-main);
     box-shadow: 0 0 10px var(--green-main);
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -219,7 +227,8 @@ a {
     gap: 6px;
 }
 
-.navbar-links a:hover, .navbar-links a.active {
+.navbar-links a:hover,
+.navbar-links a.active {
     color: var(--green-main);
     text-shadow: 0 0 8px var(--green-glow);
 }
@@ -410,8 +419,15 @@ a {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Toast Messages */
@@ -454,12 +470,23 @@ a {
 }
 
 @keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    to { transform: translateX(50%); opacity: 0; pointer-events: none; }
+    to {
+        transform: translateX(50%);
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 /* Grid & Layout Utilities */
@@ -470,12 +497,27 @@ a {
     padding: 40px 0;
 }
 
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
 /* Section Title */
 .section-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 30px;

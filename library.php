@@ -45,7 +45,7 @@ if ($db_connected && $conn) {
 ?>
 
 <div class="container library-page-container">
-    <h2 class="section-title"><i class="fa-solid fa-compact-disc"></i> Thư Viện Cá Nhân</h2>
+    <h2 class="section-title"><i class="fa-solid fa-compact-disc"></i> MusicAI Library</h2>
     
     <div class="library-tabs-nav">
         <button class="lib-tab-btn active" onclick="switchLibraryTab('ai-music-tab', this)">

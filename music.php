@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Nghe nhạc - MusicAI';
+$page_title = 'MusicAI';
 $page_desc = 'Khám phá hàng chục bài hát đỉnh cao, tìm kiếm và lọc nhạc theo thể loại để thưởng thức tức thì.';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/navbar.php';
@@ -77,7 +77,7 @@ if ($db_connected && $conn) {
 
 <div class="container music-page-container">
     <div class="music-header-controls">
-        <h2 class="section-title"><i class="fa-solid fa-music"></i> Khám Phá Âm Nhạc</h2>
+        <h2 class="section-title"><i class="fa-solid fa-music"></i>Music The World</h2>
         
         <!-- Form lọc và Tìm kiếm -->
         <form method="GET" action="" class="filter-form">

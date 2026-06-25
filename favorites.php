@@ -26,7 +26,7 @@ if ($db_connected && $conn) {
 ?>
 
 <div class="container favorites-page-container">
-    <h2 class="section-title"><i class="fa-solid fa-heart"></i> Bài Hát Yêu Thích</h2>
+    <h2 class="section-title"><i class="fa-solid fa-heart"></i> MusicAI Favorites</h2>
     
     <?php if (empty($fav_songs)): ?>
         <div class="glass-card empty-favorites">

@@ -5,10 +5,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <nav class="main-navbar">
     <div class="navbar-container">
         <!-- Logo -->
-        <a href="<?php echo url('index.php'); ?>" class="navbar-logo">
-            <span class="logo-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-            <span class="logo-text">Music<span class="highlight">AI</span></span>
-        </a>
+<a href="<?php echo url('index.php'); ?>" class="navbar-logo">
+    <i class="fa-solid fa-drum logo-icon"></i>
+    <span class="logo-text">Music<span class="highlight">AI</span></span>
+</a>
         
         <!-- Toggle Menu Mobile -->
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
@@ -19,17 +19,17 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <ul class="navbar-links" id="navbarLinks">
             <li>
                 <a href="<?php echo url('index.php'); ?>" class="<?php echo $current_page == 'index.php' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-house"></i> <span>Trang chủ</span>
+                    <i class="fa-solid fa-house"></i> <span>Home</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo url('music.php'); ?>" class="<?php echo $current_page == 'music.php' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-music"></i> <span>Nghe nhạc</span>
+                    <i class="fa-solid fa-music"></i> <span>Music</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo url('generate.php'); ?>" class="<?php echo $current_page == 'generate.php' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-wand-magic"></i> <span>Tạo nhạc AI</span>
+                    <i class="fa-solid fa-wand-magic"></i> <span>MusicGen</span>
                 </a>
             </li>
             <li>
@@ -41,17 +41,17 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <?php if (isLoggedIn()): ?>
                 <li>
                     <a href="<?php echo url('library.php'); ?>" class="<?php echo $current_page == 'library.php' ? 'active' : ''; ?>">
-                        <i class="fa-solid fa-compact-disc"></i> <span>Thư viện</span>
+                        <i class="fa-solid fa-compact-disc"></i> <span>Library</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo url('favorites.php'); ?>" class="<?php echo $current_page == 'favorites.php' ? 'active' : ''; ?>">
-                        <i class="fa-solid fa-heart"></i> <span>Yêu thích</span>
+                        <i class="fa-solid fa-heart"></i> <span>Favorites</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo url('history.php'); ?>" class="<?php echo $current_page == 'history.php' ? 'active' : ''; ?>">
-                        <i class="fa-solid fa-clock-rotate-left"></i> <span>Lịch sử</span>
+                        <i class="fa-solid fa-clock-rotate-left"></i> <span>History</span>
                     </a>
                 </li>
             <?php endif; ?>
@@ -74,6 +74,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
                                 </a>
                             </li>
                         <?php endif; ?>
+                        <li>
+                            <a href="<?php echo url('settings.php'); ?>">
+                                <i class="fa-solid fa-user-gear"></i> Cài đặt tài khoản
+                            </a>
+                        </li>
                         <li>
                             <a href="<?php echo url('logout.php'); ?>" class="logout-link">
                                 <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất

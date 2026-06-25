@@ -31,7 +31,7 @@ if ($db_connected && $conn) {
 ?>
 
 <div class="container history-page-container">
-    <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Lịch Sử Nghe Nhạc</h2>
+    <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> MusicAI History</h2>
     
     <?php if (empty($history_songs)): ?>
         <div class="glass-card empty-history">

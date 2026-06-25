@@ -1,7 +1,12 @@
 import uuid
 import time
+import random
+
+# pyrefly: ignore [missing-import]
 from fastapi import FastAPI, HTTPException
+# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
+# pyrefly: ignore [missing-import]
 from pydantic import BaseModel
 
 app = FastAPI(
@@ -48,17 +53,32 @@ def generate_music(req: GenerationRequest):
     
     # Định vị các file sound loop có sẵn tương ứng
     mock_loops = {
-        "lofi": "storage/demo/lofi_loop.mp3",
-        "edm": "storage/demo/edm_loop.mp3",
-        "trap": "storage/demo/trap_loop.mp3",
-        "chill": "storage/demo/chill_loop.mp3",
-        "piano": "storage/demo/piano_loop.mp3",
-        "ambient": "storage/demo/ambient_loop.mp3",
-        "hiphop": "storage/demo/hiphop_loop.mp3"
-    } 
+    "lofi": [
+        "storage/demo/lofi1.mp3",
+        "storage/demo/lofi2.mp3",
+        "storage/demo/lofi3.mp3"
+    ],
+    "edm": [
+        "storage/demo/edm1.mp3",
+        "storage/demo/edm2.mp3",
+        "storage/demo/edm3.mp3"
+    ],
+    "trap": [
+        "storage/demo/trap1.mp3",
+        "storage/demo/trap2.mp3",
+        "storage/demo/trap3.mp3"
+    ],
+    "ambient": [
+        "storage/demo/ambient1.mp3",
+        "storage/demo/ambient2.mp3",
+        "storage/demo/ambient3.mp3"
+    ],
+}
     
     genre_key = req.genre.lower()
-    audio_file = mock_loops.get(genre_key, "storage/samples/lofi_loop.mp3")
+
+    available_tracks = mock_loops.get(genre_key, mock_loops["lofi"])
+    audio_file = random.choice(available_tracks)    
     
     # Khởi tạo trạng thái đang xử lý (processing) với thời gian chờ giả lập 3s
     tasks[task_id] = {
@@ -105,6 +125,7 @@ def check_status(task_id: str):
     }
 
 if __name__ == "__main__":
+    # pyrefly: ignore [missing-import]
     import uvicorn
-    print("Khởi chạy Mock AI Server tại http://127.0.0.1:8000")
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    print("Khởi chạy Mock AI Server...")
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)

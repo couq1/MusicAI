@@ -64,16 +64,36 @@ $mock_task_id = 'task_mock_' . uniqid();
 
 // Danh sách file loop tương ứng
 $mock_loops = [
-    'Lofi' => 'storage/samples/lofi_loop.mp3',
-    'EDM' => 'storage/samples/edm_loop.mp3',
-    'Trap' => 'storage/samples/trap_loop.mp3',
-    'Chill' => 'storage/samples/chill_loop.mp3',
-    'Piano' => 'storage/samples/piano_loop.mp3',
-    'Ambient' => 'storage/samples/ambient_loop.mp3',
-    'Hip-hop' => 'storage/samples/hiphop_loop.mp3'
+    "lofi" => [
+        "storage/demo/lofi1.mp3",
+        "storage/demo/lofi2.mp3",
+        "storage/demo/lofi3.mp3"
+    ],
+    "edm" => [
+        "storage/demo/edm1.mp3",
+        "storage/demo/edm2.mp3",
+        "storage/demo/edm3.mp3"
+    ],
+    "trap" => [
+        "storage/demo/trap1.mp3",
+        "storage/demo/trap2.mp3",
+        "storage/demo/trap3.mp3"
+    ],
+    "ambient" => [
+        "storage/demo/ambient1.mp3",
+        "storage/demo/ambient2.mp3",
+        "storage/demo/ambient3.mp3"
+    ],
 ];
 
-$audio_file = isset($mock_loops[$genre]) ? $mock_loops[$genre] : 'storage/samples/lofi_loop.mp3';
+$genre_key = strtolower($genre);
+
+if (isset($mock_loops[$genre_key])) {
+    $random_key = array_rand($mock_loops[$genre_key]);
+    $audio_file = $mock_loops[$genre_key][$random_key];
+} else {
+    $audio_file = 'storage/demo/lofi1.mp3';
+}
 
 // Lưu trữ thông tin task ảo vào Session để api/ai/check_status.php truy cập
 if (!isset($_SESSION['mock_tasks'])) {

@@ -22,7 +22,7 @@ if ($db_connected && $conn) {
 <section class="hero-section">
     <div class="hero-glow"></div>
     <div class="container hero-content">
-        <h1 class="hero-title">Sáng Tạo Âm Nhạc Bằng <span class="highlight">Trí Tuệ Nhân Tạo</span></h1>
+        <h1 class="hero-title">Make Music<span class="highlight">Feel The Beat</span></h1>
         <p class="hero-subtitle">Nghe nhạc chất lượng cao, tạo các bài hát độc quyền từ văn bản prompt và khám phá thế giới beatbox tương tác sinh động.</p>
         <div class="hero-actions">
             <a href="<?php echo url('music.php'); ?>" class="btn btn-primary btn-lg"><i class="fa-solid fa-play"></i> Nghe nhạc ngay</a>
@@ -34,26 +34,26 @@ if ($db_connected && $conn) {
 
 <!-- Features Info Section -->
 <section class="container features-section">
-    <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 3 Tính Năng Độc Đáo</h2>
+    <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 3 Core Experiences</h2>
     <div class="grid-3">
         <div class="glass-card feature-card">
             <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
-            <h3>Trình Nghe Nhạc Cao Cấp</h3>
+            <h3>Advanced Music Player</h3>
             <p>Trải nghiệm thư viện âm nhạc đa dạng các thể loại, chất lượng âm thanh HD cùng trình phát nhạc cố định mượt mà ở chân trang.</p>
             <a href="<?php echo url('music.php'); ?>" class="feature-link">Khám phá ngay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         
         <div class="glass-card feature-card">
             <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h3>Tạo Nhạc AI Cực Nhanh</h3>
+            <h3>AI Music Generator</h3>
             <p>Chỉ cần nhập mô tả (prompt), chọn thể loại, tâm trạng, AI Generator của chúng tôi sẽ tự động sáng tạo bài hát của riêng bạn sau vài giây.</p>
             <a href="<?php echo url('generate.php'); ?>" class="feature-link">Sáng tạo ngay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         
         <div class="glass-card feature-card">
             <div class="feature-icon"><i class="fa-solid fa-shapes"></i></div>
-            <h3>Trộn Beat Incredibox Style</h3>
-            <p>Tự tay làm producer bằng cách kéo thả các vòng lặp drums, bass, vocals, effects vào các slot nhân vật để tạo nên bản phối tuyệt đỉnh.</p>
+            <h3>Incredibox-Style Beat Mixer</h3>
+            <p>Tự tay làm producer bằng cách kéo thả các vòng lặp drums, bass, vocals, effects vào các slot để tạo nên bản phối tuyệt đỉnh.</p>
             <a href="<?php echo url('beatmaker.php'); ?>" class="feature-link">Chơi beat ngay <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
@@ -62,8 +62,8 @@ if ($db_connected && $conn) {
 <!-- Featured Tracks Section -->
 <section class="container featured-tracks-section">
     <div class="section-header-row">
-        <h2 class="section-title"><i class="fa-solid fa-star"></i> Bài Hát Nổi Bật</h2>
-        <a href="<?php echo url('music.php'); ?>" class="btn btn-secondary btn-sm">Xem tất cả</a>
+        <h2 class="section-title"><i class="fa-solid fa-star"></i> Featured Tracks</h2>
+        <a href="<?php echo url('music.php'); ?>" class="btn btn-secondary btn-sm">View All</a>
     </div>
     <div class="grid-4">
         <?php foreach ($featured_songs as $song): ?>
@@ -166,17 +166,33 @@ if ($db_connected && $conn) {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.2;
-    margin-bottom: 20px;
+    font-family: 'Kaushan Script', cursive;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #f4fff9;
+    margin-bottom: 30px;
+}
+
+.hero-script {
+    display: block;
+    margin-top: 20px;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: 800;
+    font-size: clamp(34px, 5vw, 58px);
+    color: #7cf4b2;
+    text-shadow: 0 0 14px rgba(0, 255, 136, 0.22);
 }
 
 .hero-subtitle {
+    font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto 40px auto;
+    color: rgba(3, 56, 7, 0.69);  
+    max-width: 720px;
+    margin: 0 auto 40px;
+
 }
 
 .hero-actions {

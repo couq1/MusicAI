@@ -60,6 +60,6 @@ function requireAdmin() {
             <a href='" . BASE_URL . "index.php'>Quay lại Trang chủ</a>
         </body>
         </html>";
-        exit();
+        exit(); 
     }
 }

@@ -11,14 +11,14 @@ requireLogin();
 ?>
 
 <div class="container">
-    <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Tạo Nhạc Trí Tuệ Nhân Tạo (AI)</h2>
+    <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> MusicAI Generator </h2>
     
     <div class="generator-layout">
         <!-- Panel Form Điều khiển nhập liệu -->
         <div class="glass-card generator-form-panel">
             <form id="generatorForm">
                 <div class="form-group">
-                    <label for="prompt">Nhập mô tả ý tưởng bài nhạc (Prompt bằng tiếng Anh hoặc tiếng Việt)</label>
+                    <label for="prompt">Nhập mô tả ý tưởng bài nhạc</label>
                     <div class="prompt-textarea-wrapper">
                         <textarea id="prompt" name="prompt" class="form-control" placeholder="Ví dụ: A chill lofi beat with electric piano and soft rain sounds in the background..." maxlength="250" required></textarea>
                         <span class="prompt-char-counter" id="charCounter">0/250</span>
@@ -32,10 +32,8 @@ requireLogin();
                             <option value="Lofi">Lofi</option>
                             <option value="EDM">EDM</option>
                             <option value="Trap">Trap</option>
-                            <option value="Chill">Chill</option>
-                            <option value="Piano">Piano</option>
                             <option value="Ambient">Ambient</option>
-                            <option value="Hip-hop">Hip-hop</option>
+
                         </select>
                     </div>
                     
