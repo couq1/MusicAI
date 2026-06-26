@@ -582,3 +582,146 @@ select.form-control option {
     background: var(--bg-soft);
     color: var(--text-main);
 }
+
+/* ==============================
+   Favorites Page - List Layout
+   ============================== */
+/* Ép Favorites thành dạng list nhỏ */
+.empty-favorites {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
+.empty-favorites i {
+    font-size: 3.5rem;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+}
+
+.empty-favorites h3 {
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+/* ===== Favorites List Layout ===== */
+.favorites-page-container .favorites-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin-top: 24px !important;
+}
+
+/* Mỗi bài hát là 1 hàng ngang */
+.favorites-page-container .favorite-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    width: 100% !important;
+    min-height: 110px !important;
+    padding: 14px 18px !important;
+    border-radius: 18px !important;
+    transform: none !important;
+}
+
+/* Không cho hover kéo layout lệch */
+.favorites-page-container .favorite-row:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Ép tất cả ảnh cùng kích thước */
+.favorites-page-container img.favorite-cover {
+    width: 86px !important;
+    height: 86px !important;
+    min-width: 86px !important;
+    max-width: 86px !important;
+    flex: 0 0 86px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 14px !important;
+    display: block !important;
+}
+
+/* Nội dung bài hát */
+.favorites-page-container .favorite-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.favorites-page-container .favorite-info h4 {
+    margin: 0 0 4px !important;
+    font-size: 1rem !important;
+    color: var(--text-main) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.favorites-page-container .favorite-info p {
+    margin: 0 0 4px !important;
+    font-size: 0.88rem !important;
+    color: var(--text-muted) !important;
+}
+
+.favorites-page-container .favorite-info span {
+    font-size: 0.82rem !important;
+    color: var(--green-main) !important;
+    font-weight: 600 !important;
+}
+
+/* Nút nghe lại + tim */
+.favorites-page-container .favorite-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.favorites-page-container .favorite-play-btn {
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 9px 14px !important;
+    background: var(--green-main) !important;
+    color: #00150c !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    white-space: nowrap !important;
+}
+
+.favorites-page-container .favorite-remove-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: rgba(0, 255, 136, 0.1) !important;
+    color: var(--green-main) !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .favorites-page-container img.favorite-cover {
+        width: 64px !important;
+        height: 64px !important;
+        min-width: 64px !important;
+        max-width: 64px !important;
+        flex-basis: 64px !important;
+    }
+
+    .favorites-page-container .favorite-row {
+        padding: 12px !important;
+        gap: 12px !important;
+    }
+
+    .favorites-page-container .favorite-play-btn {
+        font-size: 0.8rem !important;
+        padding: 8px 10px !important;
+    }
+}

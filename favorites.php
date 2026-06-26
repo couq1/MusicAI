@@ -36,7 +36,7 @@ if ($db_connected && $conn) {
             <a href="<?php echo url('music.php'); ?>" class="btn btn-primary" style="margin-top: 15px;">Nghe nhạc ngay</a>
         </div>
     <?php else: ?>
-        <div class="grid-4">
+        <div class="favorites-list">
             <?php 
                 // Tạo danh sách playlist để phát liên tiếp
                 $playlist_data = [];
@@ -77,27 +77,41 @@ if ($db_connected && $conn) {
                     ];
                     $song_json = json_encode($song_data, JSON_UNESCAPED_UNICODE);
                 ?>
-                <div class="glass-card song-card-item">
-                    <div class="song-cover-box">
-                        <img src="<?php echo url($cover_src); ?>" alt="<?php echo sanitize($song['title']); ?>" class="song-item-cover">
-                        <button class="play-overlay-btn" onclick='playTrackOnPlayer(<?php echo htmlspecialchars($song_json, ENT_QUOTES, 'UTF-8'); ?>, <?php echo htmlspecialchars($playlist_json, ENT_QUOTES, 'UTF-8'); ?>)' title="Phát bài hát">
-                            <i class="fa-solid fa-play"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="song-item-info">
-                        <h4 class="song-item-title"><?php echo sanitize($song['title']); ?></h4>
-                        <p class="song-item-artist"><?php echo sanitize($song['artist']); ?></p>
-                        
-                        <div class="song-item-meta">
-                            <span class="genre-tag"><?php echo sanitize($song['genre']); ?></span>
-                            <!-- Nút gỡ tim nhanh -->
-                            <button class="song-fav-btn active" data-song-id="<?php echo $song['id']; ?>" onclick="toggleFavFromPage(<?php echo $song['id']; ?>, this)" title="Bỏ yêu thích" style="background:none; border:none; color:var(--green-main); cursor:pointer; font-size:1.15rem;">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+               <div class="glass-card favorite-row">
+
+    <img 
+        src="<?php echo url($cover_src); ?>" 
+        alt="<?php echo sanitize($song['title']); ?>" 
+        class="favorite-cover"
+    >
+
+    <div class="favorite-info">
+        <h4><?php echo sanitize($song['title']); ?></h4>
+        <p><?php echo sanitize($song['artist']); ?></p>
+        <span><?php echo sanitize($song['genre']); ?></span>
+    </div>
+
+    <div class="favorite-actions">
+        <button 
+            class="favorite-play-btn"
+            onclick='playTrackOnPlayer(<?php echo htmlspecialchars($song_json, ENT_QUOTES, 'UTF-8'); ?>, <?php echo htmlspecialchars($playlist_json, ENT_QUOTES, 'UTF-8'); ?>)'
+            title="Nghe lại"
+        >
+            <i class="fa-solid fa-play"></i>
+            Nghe lại
+        </button>
+
+        <button 
+            class="song-fav-btn active favorite-remove-btn" 
+            data-song-id="<?php echo $song['id']; ?>" 
+            onclick="toggleFavFromPage(<?php echo $song['id']; ?>, this)" 
+            title="Bỏ yêu thích"
+        >
+            <i class="fa-solid fa-heart"></i>
+        </button>
+    </div>
+
+</div>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
@@ -138,13 +152,13 @@ async function toggleFavFromPage(songId, btn) {
         
         // Remove card element out of DOM if unfavorited
         if (!res.data.is_favorite) {
-            const card = btn.closest('.song-card-item');
+            const card = btn.closest('.favorite-row');
             card.style.opacity = '0';
             card.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 card.remove();
                 // Nếu hết bài hát thì reload trang để hiện placeholder trống
-                const grid = document.querySelector('.grid-4');
+                const grid = document.querySelector('.favorites-list');
                 if (grid && grid.children.length === 0) {
                     window.location.reload();
                 }

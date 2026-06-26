@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $thumbnail = '';
             
             // Tạo các thư mục lưu trữ nếu chưa tồn tại
-            $audio_dir = dirname(__DIR__) . '/storage/audio';
-            $thumb_dir = dirname(__DIR__) . '/storage/thumbnails';
+            $audio_dir = dirname(__DIR__) . '/storage/samples';
+            $thumb_dir = dirname(__DIR__) . '/assets/images';
             
             if (!is_dir($audio_dir)) {
                 mkdir($audio_dir, 0777, true);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $audio_name = time() . '_' . uniqid() . '.mp3';
                         $target_audio = $audio_dir . '/' . $audio_name;
                         if (move_uploaded_file($_FILES['audio']['tmp_name'], $target_audio)) {
-                            $audio_file = 'storage/audio/' . $audio_name;
+                            $audio_file = 'storage/samples/' . $audio_name;
                         } else {
                             $error = 'Lỗi lưu trữ file âm thanh!';
                         }
@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $cover_name = time() . '_' . uniqid() . '.' . $img_ext;
                         $target_cover = $thumb_dir . '/' . $cover_name;
                         if (move_uploaded_file($_FILES['cover']['tmp_name'], $target_cover)) {
-                            $thumbnail = 'storage/thumbnails/' . $cover_name;
+                            $thumbnail = 'assets/images/' . $cover_name;
+                        } else {
+                            $error = 'Lỗi lưu trữ ảnh bìa !';
                         }
                     }
                 }
@@ -99,14 +101,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $del->execute([$id]);
                         
                         // Xóa file âm thanh
-                        $audio_path = dirname(__DIR__) . '/' . $song['audio_file'];
+                            $audio_path = dirname(__DIR__) . '/' . ltrim($song['audio_file'], '/');
                         if (file_exists($audio_path) && is_file($audio_path)) {
                             unlink($audio_path);
                         }
                         
                         // Xóa ảnh bìa
                         if (!empty($song['thumbnail'])) {
-                            $cover_path = dirname(__DIR__) . '/' . $song['thumbnail'];
+                            $cover_path = dirname(__DIR__) . '/' . ltrim($song['thumbnail'], '/');
                             if (file_exists($cover_path) && is_file($cover_path)) {
                                 unlink($cover_path);
                             }
@@ -208,12 +210,18 @@ if ($db_connected && $conn) {
             <tbody>
                 <?php foreach ($songs as $song): ?>
                     <?php 
-                        $cover_src = 'assets/images/default_song.jpg';
-                        if (!empty($song['thumbnail'])) {
-                            $cover_src = (strpos($song['thumbnail'], 'assets/') === 0 || strpos($song['thumbnail'], 'storage/') === 0) 
-                                ? $song['thumbnail'] 
-                                : 'storage/thumbnails/' . $song['thumbnail'];
-                        }
+                      
+$cover_src = 'assets/images/default_song.jpg';
+
+if (!empty($song['thumbnail'])) {
+    $thumb = ltrim($song['thumbnail'], '/');
+
+    if (strpos($thumb, 'assets/') === 0 || strpos($thumb, 'storage/') === 0) {
+        $cover_src = $thumb;
+    } else {
+        $cover_src = 'storage/thumbnails/' . $thumb;
+    }
+}
                     ?>
                     <tr>
                         <td>

@@ -189,7 +189,7 @@ if ($db_connected && $conn) {
 .hero-subtitle {
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 1.25rem;
-    color: rgba(3, 56, 7, 0.69);  
+    color: rgba(97, 110, 98, 0.69);  
     max-width: 720px;
     margin: 0 auto 40px;
 
