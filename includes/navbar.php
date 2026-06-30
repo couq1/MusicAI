@@ -88,7 +88,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </div>
             <?php else: ?>
                 <a href="<?php echo url('login.php'); ?>" class="btn btn-outline btn-sm">Đăng nhập</a>
-                <a href="<?php echo url('register.php'); ?>" class="btn btn-primary btn-sm">Đăng ký</a>
+                <a href="<?php echo url('register.php'); ?>" class="btn btn-primary btn-sm">Đăng ký</a> 
             <?php endif; ?>
         </div>
     </div>

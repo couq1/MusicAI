@@ -21,7 +21,7 @@ require_once dirname(__DIR__) . '/includes/auth.php';
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="<?php echo url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="<?php echo url('assets/css/player.css'); ?>">
-    <?php 
+    <?php  
     if (isset($extra_css) && is_array($extra_css)) {
         foreach ($extra_css as $css_file) {
             echo '<link rel="stylesheet" href="' . url('assets/css/' . $css_file) . '">' . "\n";

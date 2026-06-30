@@ -142,14 +142,17 @@ a {
 }
 
 .btn-primary {
-    background: var(--green-main);
-    color: var(--bg-main);
-    box-shadow: 0 0 15px var(--green-glow);
+    background: #078348;
+    color: #031107;
+    border: 1px solid #00ff88;
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(0, 255, 136, 0.45);
 }
 
 .btn-primary:hover {
-    background: var(--green-hover);
-    box-shadow: 0 0 25px var(--green-main);
+    background: #05713e;
+    color: #031107;
+    box-shadow: 0 0 28px rgba(0, 255, 136, 0.65);
     transform: scale(1.03);
 }
 
