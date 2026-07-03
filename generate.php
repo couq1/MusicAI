@@ -31,7 +31,7 @@ requireLogin();
                         <select id="genre" name="genre" class="form-control">
                             <option value="Lofi">Lofi</option>
                             <option value="EDM">EDM</option>
-                            <option value="Trap">Trap</option>
+                            <option value="rap">rap</option>
                             <option value="Ambient">Ambient</option>
 
                         </select>

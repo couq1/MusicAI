@@ -36,7 +36,7 @@ if ($db_connected && $conn) {
         $total_ai_songs = count($fallback_ai_songs);
         $total_beat_mixes = count($fallback_beat_mixes);
         $total_plays = 5320;
-        $top_song = $fallback_songs[3]; // Hard Trap Anthem (2450 plays)
+        $top_song = $fallback_songs[3]; // Hard rap Anthem (2450 plays)
     }
 } else {
     // Dữ liệu dự phòng khi chưa cài DB
@@ -45,7 +45,7 @@ if ($db_connected && $conn) {
     $total_ai_songs = count($fallback_ai_songs);
     $total_beat_mixes = count($fallback_beat_mixes);
     $total_plays = 5320;
-    $top_song = $fallback_songs[3]; // Hard Trap Anthem
+    $top_song = $fallback_songs[3]; // Hard rap Anthem
 }
 ?>
 

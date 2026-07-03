@@ -268,11 +268,7 @@ $current_admin_page = basename($_SERVER['PHP_SELF']);
                     <i class="fa-solid fa-shapes"></i> Beatmaker Sounds
                 </a>
             </li>
-            <li class="<?php echo $current_admin_page == 'settings.php' ? 'active' : ''; ?>">
-                <a href="<?php echo url('admin/settings.php'); ?>">
-                    <i class="fa-solid fa-sliders"></i> Cấu hình Web
-                </a>
-            </li>
+
             <li style="margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 15px;">
                 <a href="<?php echo url('index.php'); ?>" style="color: #ff9900;">
                     <i class="fa-solid fa-house"></i> Về Trang chủ

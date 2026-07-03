@@ -56,17 +56,17 @@ $fallback_songs = [
     ],
     [
         'id' => 4,
-        'title' => 'Hard Trap Anthem',
+        'title' => 'Hard rap Anthem',
         'artist' => 'Beats AI',
-        'genre' => 'Trap',
-        'audio_file' => 'assets/audio/sample_trap.mp3',
-        'thumbnail' => 'assets/images/sample_trap.jpg',
+        'genre' => 'rap',
+        'audio_file' => 'assets/audio/sample_rap.mp3',
+        'thumbnail' => 'assets/images/sample_rap.jpg',
         'plays' => 2450,
         'created_at' => '2026-06-18 21:00:00'
     ]
 ];
 
-$fallback_genres = ['Lofi', 'EDM', 'Trap', 'Chill', 'Piano', 'Ambient', 'Hip-hop'];
+$fallback_genres = ['Lofi', 'EDM', 'rap', 'Chill', 'Piano', 'Ambient', 'Hip-hop'];
 $fallback_sounds = [
     // Drums
     ['id' => 1, 'name' => 'Acoustic Kick', 'category' => 'drums', 'audio_file' => 'assets/audio/drums/drum1.wav'],
@@ -89,8 +89,8 @@ $fallback_ai_songs = [
     [
         'id' => 1,
         'user_name' => 'Demo User',
-        'prompt' => 'A dark trap beat with piano melody',
-        'genre' => 'Trap',
+        'prompt' => 'A dark rap beat with piano melody',
+        'genre' => 'rap',
         'mood' => 'Dark',
         'duration' => 30,
         'audio_file' => 'storage/generated/mock_ai_song.mp3',

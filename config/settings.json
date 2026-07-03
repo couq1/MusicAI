@@ -1,0 +1,7 @@
+{
+    "site_name": "Music",
+    "logo_text": "Music",
+    "footer_text": "2026 MusicAI",
+    "enable_ai": "1",
+    "ai_url": "http:\/\/127.0.0.1:8000"
+}

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 26, 2026 lúc 02:33 PM
+-- Thời gian đã tạo: Th7 03, 2026 lúc 07:17 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -176,7 +176,16 @@ INSERT INTO `listening_history` (`id`, `user_id`, `song_id`, `listened_at`) VALU
 (33, 1, 12, '2026-06-26 12:13:37'),
 (34, 1, 12, '2026-06-26 12:13:54'),
 (35, 1, 9, '2026-06-26 12:28:15'),
-(36, 1, 13, '2026-06-26 12:31:56');
+(36, 1, 13, '2026-06-26 12:31:56'),
+(37, 1, 31, '2026-07-03 17:16:08'),
+(38, 1, 30, '2026-07-03 17:16:13'),
+(39, 1, 29, '2026-07-03 17:16:15'),
+(40, 1, 28, '2026-07-03 17:16:20'),
+(41, 1, 27, '2026-07-03 17:16:22'),
+(42, 1, 26, '2026-07-03 17:16:23'),
+(43, 1, 25, '2026-07-03 17:16:27'),
+(44, 1, 24, '2026-07-03 17:16:31'),
+(45, 1, 20, '2026-07-03 17:16:33');
 
 -- --------------------------------------------------------
 
@@ -202,14 +211,32 @@ CREATE TABLE `songs` (
 INSERT INTO `songs` (`id`, `title`, `artist`, `genre`, `audio_file`, `thumbnail`, `plays`, `created_at`) VALUES
 (1, 'Lofi Dream', 'Sunset Beats', 'Lofi', 'storage/samples/lofi_loop.mp3', 'assets/images/dream.jpg', 1254, '2026-06-21 16:08:13'),
 (2, 'EDM Energy', 'Cyber DJ', 'EDM', 'storage/samples/edm_loop.mp3', 'assets/images/edm.jpg', 981, '2026-06-21 16:08:13'),
-(3, 'Acoustic Sun', 'Nature Sound', 'Chill', 'storage/samples/chill_loop.mp3', 'assets/images/aucotic.jpg', 644, '2026-06-21 16:08:13'),
-(4, 'Hard Trap Anthem', 'Bass Producer', 'Trap', 'storage/samples/trap_loop.mp3', 'assets/images/trap.jpg', 40, '2026-06-21 16:08:13'),
-(5, 'lofi_chill', 'Q1', 'lofi', 'storage/samples/lofi_chill.mp3', 'assets/images/chill.jpg', 2407, '2026-06-21 16:08:13'),
+(3, 'Acoustic Sun', 'Nature Sound', 'Lofi', 'storage/samples/chill_loop.mp3', 'assets/images/aucotic.jpg', 644, '2026-06-21 16:08:13'),
+(4, 'Hard Trap Anthem', 'Bass Producer', 'Rap', 'storage/samples/trap_loop.mp3', 'assets/images/trap.jpg', 40, '2026-06-21 16:08:13'),
+(5, 'Lofi_chill for learning\r\n', 'Q1', 'Lofi', 'storage/samples/lofi_chill.mp3', 'assets/images/chill.jpg', 2407, '2026-06-21 16:08:13'),
 (6, 'Piano', 'Alex', 'Piano', 'storage/samples/piano_loop.mp3', 'assets/images/piano.jpg', 20, '2026-06-21 16:08:13'),
-(7, 'ambient_music', 'Antony', 'ambient', 'storage/samples/ambient_loop.mp3', 'assets/images/ambient.jpg', 33, '2026-06-21 16:08:13'),
-(8, 'hiphop_dance', 'Vicky', 'hiphop_dance', 'storage/samples/hiphop_loop.mp3', 'assets/images/hiphop.jpg', 975, '2026-06-21 16:08:13'),
-(9, 'Người hay nói gặp người lặng im', 'Hiếu Thứ Hai', 'Lofi', 'storage/samples/1782476004_6a3e6ce4231c1.mp3', 'assets/images/1782476004_6a3e6ce423627.jpg', 3, '2026-06-26 12:13:24'),
-(10, 'Hóa Đơn', 'Trịnh Kiên', 'Pop', 'storage/samples/1782477103_6a3e712f0c780.mp3', 'assets/images/1782477103_6a3e712f0d5af.png', 1, '2026-06-26 12:31:43');
+(7, 'Ambient_music\r\n', 'Antony', 'Ambient', 'storage/samples/ambient_loop.mp3', 'assets/images/ambient.jpg', 33, '2026-06-21 16:08:13'),
+(8, 'Hiphop_dance', 'Vicky', 'HipHop', 'storage/samples/hiphop_loop.mp3', 'assets/images/hiphop.jpg', 975, '2026-06-21 16:08:13'),
+(9, 'Người hay nói gặp người lặng im', 'Hiếu Thứ Hai', 'Rap', 'storage/samples/1782476004_6a3e6ce4231c1.mp3', 'assets/images/1782476004_6a3e6ce423627.jpg', 3, '2026-06-26 12:13:24'),
+(10, 'Hóa Đơn', 'Trịnh Kiên', 'Pop', 'storage/samples/1782477103_6a3e712f0c780.mp3', 'assets/images/1782477103_6a3e712f0d5af.png', 1, '2026-06-26 12:31:43'),
+(14, 'Hãy Trao cho anh', 'Sơn Tùng MTP', 'Pop', 'storage/samples/1783096309_6a47e3f5f11fd.mp3', 'assets/images/1783096309_6a47e3f5f1bdb.png', 0, '2026-07-03 16:31:49'),
+(15, 'Hoa nở không màu', 'Hoài Lâm', 'Pop', 'storage/samples/1783096350_6a47e41e44b66.mp3', 'assets/images/1783096350_6a47e41e44f16.png', 0, '2026-07-03 16:32:30'),
+(16, 'Tìm lại bầu trời', 'Tuấn Hứng', 'Pop', 'storage/samples/1783096385_6a47e44111460.mp3', 'assets/images/1783096385_6a47e44111a11.png', 0, '2026-07-03 16:33:05'),
+(17, 'Nhạt', 'Phan Mạnh Quỳnh', 'Pop', 'storage/samples/1783096445_6a47e47de2596.mp3', 'assets/images/1783096445_6a47e47de2ce9.png', 0, '2026-07-03 16:34:05'),
+(18, 'Ambient-432Hz', 'Calim', 'Ambient', 'storage/samples/1783097023_6a47e6bf94aed.mp3', 'assets/images/1783097023_6a47e6bf957f1.png', 0, '2026-07-03 16:43:43'),
+(19, 'HipHopbasso', 'JabbWokee', 'Hiphop', 'storage/samples/1783097073_6a47e6f1b2668.mp3', 'assets/images/1783097073_6a47e6f1b2c1f.png', 0, '2026-07-03 16:44:33'),
+(20, 'Ordinary', 'Alex', 'US-UK', 'storage/samples/1783097997_6a47ea8daa3a7.mp3', 'assets/images/1783097997_6a47ea8dab32d.png', 1, '2026-07-03 16:59:57'),
+(21, 'Perfect', 'Ed Sheeran', 'US-UK', 'storage/samples/1783098053_6a47eac55bc60.mp3', 'assets/images/1783098053_6a47eac55ce38.png', 0, '2026-07-03 17:00:53'),
+(22, 'Shape of you', 'Ed SheeranEd', 'US-UK', 'storage/samples/1783098084_6a47eae4e0e5c.mp3', 'assets/images/1783098084_6a47eae4e150b.png', 0, '2026-07-03 17:01:24'),
+(23, 'Old town road', 'Lil Nax X', 'US-UK', 'storage/samples/1783098123_6a47eb0b14f6b.mp3', 'assets/images/1783098123_6a47eb0b158cc.png', 0, '2026-07-03 17:02:03'),
+(24, 'Die with a smile', 'Lady Gaga, Bruno Mars', 'US-UK', 'storage/samples/1783098175_6a47eb3f01e4e.mp3', 'assets/images/1783098175_6a47eb3f022bb.png', 1, '2026-07-03 17:02:55'),
+(25, 'The lazzy song', 'Bruno Mars', 'US-UK', 'storage/samples/1783098199_6a47eb573b36b.mp3', 'assets/images/1783098199_6a47eb573b88c.png', 1, '2026-07-03 17:03:19'),
+(26, 'Em', 'Binz', 'Rap', 'storage/samples/1783098700_6a47ed4c52fbd.mp3', 'assets/images/1783098700_6a47ed4c538f8.jpg', 1, '2026-07-03 17:11:40'),
+(27, 'Bắc Bling (Bắc Ninh)', 'Hòa Minzy feat Tuấn cry', 'Pop', 'storage/samples/1783098744_6a47ed786952f.mp3', 'assets/images/1783098744_6a47ed786993e.jpg', 1, '2026-07-03 17:12:24'),
+(28, 'Come my way', 'Sơn Tùng MTP', 'Pop', 'storage/samples/1783098772_6a47ed94c7094.mp3', 'assets/images/1783098772_6a47ed94c781e.jpg', 1, '2026-07-03 17:12:52'),
+(29, 'Đừng làm trái tim anh đau', 'Sơn Tùng MTP', 'Pop', 'storage/samples/1783098831_6a47edcf6304d.mp3', 'assets/images/1783098831_6a47edcf63552.jpg', 1, '2026-07-03 17:13:51'),
+(30, 'Muộn rồi mà sao còn', 'Sơn Tùng MTP', 'Pop', 'storage/samples/1783098851_6a47ede3cc0b0.mp3', 'assets/images/1783098851_6a47ede3cc50d.jpg', 1, '2026-07-03 17:14:11'),
+(31, 'Waiting for u', 'Mono', 'Pop', 'storage/samples/1783098882_6a47ee0281718.mp3', 'assets/images/1783098882_6a47ee0281d00.jpg', 1, '2026-07-03 17:14:42');
 
 -- --------------------------------------------------------
 
@@ -322,13 +349,13 @@ ALTER TABLE `favorites`
 -- AUTO_INCREMENT cho bảng `listening_history`
 --
 ALTER TABLE `listening_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT cho bảng `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

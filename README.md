@@ -111,7 +111,7 @@ Phần tính năng Tạo nhạc AI trong `generate.php` kết nối trực tiế
 
 ## 4. Các Chức Năng Chính Trên Website
 
-1. **Nghe nhạc**: Tìm kiếm bài hát theo tên, lọc bài hát theo thể loại (Lofi, EDM, Trap, Chill). Trình phát nhạc cố định hỗ trợ Play, Pause, Next, Previous, Volume, Progress Bar, Yêu thích và Tự động lưu Lịch sử.
+1. **Nghe nhạc**: Tìm kiếm bài hát theo tên, lọc bài hát theo thể loại (Lofi, EDM, rap, Chill). Trình phát nhạc cố định hỗ trợ Play, Pause, Next, Previous, Volume, Progress Bar, Yêu thích và Tự động lưu Lịch sử.
 2. **Tạo nhạc AI**: Nhập mô tả (Prompt), chọn thể loại, tâm trạng và thời lượng. Giao diện hiển thị hiệu ứng Loading đếm ngược và cho phép nghe thử trước khi nhấn lưu vào thư viện cá nhân.
 3. **Beatmaker Studio**: Trình Mixer kéo thả 5 kênh. Kéo các Sound loop mẫu (Drums, Bass, Melody, Vocals, Effects) thả vào các slot nhân vật để kích hoạt âm thanh phối hợp. Bạn có thể Lưu bản Mix và Nạp lại bản Mix từ thư viện.
 4. **Trang Admin**: Giao diện sidebar tối giản thống kê số liệu tổng quan bài hát, người dùng, quản lý CRUD thành viên, upload nhạc gốc (.mp3 và cover ảnh bìa), duyệt danh sách nhạc AI tự tạo và điều chỉnh cấu hình toàn trang.

@@ -63,10 +63,10 @@ def generate_music(req: GenerationRequest):
         "storage/demo/edm2.mp3",
         "storage/demo/edm3.mp3"
     ],
-    "trap": [
-        "storage/demo/trap1.mp3",
-        "storage/demo/trap2.mp3",
-        "storage/demo/trap3.mp3"
+    "rap": [
+        "storage/demo/rap1.mp3",
+        "storage/demo/rap2.mp3",
+        "storage/demo/rap3.mp3"
     ],
     "ambient": [
         "storage/demo/ambient1.mp3",

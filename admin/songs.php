@@ -170,10 +170,12 @@ if ($db_connected && $conn) {
                 <select id="genre" name="genre" class="form-control">
                     <option value="Lofi">Lofi</option>
                     <option value="EDM">EDM</option>
-                    <option value="Trap">Trap</option>
-                    <option value="Chill">Chill</option>
+                    <option value="Rap">Rap</option>
                     <option value="Pop">Pop</option>
-                    <option value="Jazz">Jazz</option>
+                    <option value="Hiphop">Hiphop</option>
+                    <option value="Ambient">Ambient</option> 
+                    <option value="Piano">Piano</option>
+                    <option value="US-UK">US-UK</option>
                 </select>
             </div>
             

@@ -36,7 +36,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 MusicAI. Thiết kế hiện đại với phong cách Glassmorphism & Neon Glow. Bảo lưu mọi quyền.</p>
+            <p>&copy; 2026 MusicAI.</p>
         </div>
     </footer>
 
