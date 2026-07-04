@@ -1,6 +1,7 @@
 # MusicAI - Website Nghe Nhạc, Tạo Nhạc AI & Beatmaker Studio 
-### http://localhost/MusicAI/index.php
+### http://localhost/MusicAI/ 
 
+---
 MusicAI là một nền tảng website nghe nhạc hiện đại kết hợp trí tuệ nhân tạo (AI) để sinh nhạc tự động theo prompt và phòng thu Beatmaker Studio độc đáo (theo phong cách chơi nhạc của Incredibox). Dự án được phát triển hoàn toàn bằng **PHP thuần (PDO)** kết hợp **HTML5/CSS3/JS thuần** (Glassmorphism & Neon Green theme) và một **Python AI Server (FastAPI)** giả lập.
 
 ---
@@ -34,8 +35,7 @@ MusicAI/
 │   ├── ai_server.php       # Cấu hình kết nối AI Server
 │   └── settings.json       # File cấu hình động từ trang Admin
 ├── database/               # Cơ sở dữ liệu SQL
-│   ├── music_ai.sql        # File cấu trúc bảng
-│   └── sample_data.sql     # File dữ liệu mẫu khởi tạo
+│   └── music_ai.sql        # File cấu trúc bảng
 ├── docs/                   # Tài liệu sơ đồ thiết kế
 │   └── architecture.md     # Sơ đồ ERD, Use Case, Activity, Architecture
 ├── includes/               # Giao diện dùng chung cho trang Client
@@ -45,10 +45,10 @@ MusicAI/
 │   ├── auth.php            # Xử lý phân quyền Session
 │   └── music_player.php    # Trình phát nhạc cố định dưới màn hình
 ├── storage/                # Thư mục lưu trữ tệp tải lên (upload)
-│   ├── audio/              # Nhạc gốc tải lên
+│   ├── avatars/            # Ảnh đại diện
 │   ├── beats/              # Loops beatmaker
 │   ├── demo/               # Nhạc demo cho phần AI
-│   ├── samples/            # Các sound loop cho phần music
+│   └──  samples/            # Các sound loop cho phần music
 ├── index.php               # Trang chủ giới thiệu bài hát
 ├── music.php               # Trang nghe nhạc & tìm kiếm, lọc thể loại
 ├── generate.php            # Trang tạo nhạc AI bằng prompt
@@ -75,20 +75,20 @@ MusicAI/
 2. Tạo mới một cơ sở dữ liệu có tên là `music_ai`.
 3. Chọn cơ sở dữ liệu `music_ai` vừa tạo, nhấp chọn tab **Import** (Nhập), tiến hành chọn và chạy lần lượt các file:
    * `database/music_ai.sql` (Cấu trúc bảng)
-   * `database/sample_data.sql` (Dữ liệu mẫu thành viên và bài hát)
+
 4. Mở file `config/database.php` và điều chỉnh lại cấu hình tài khoản kết nối MySQL (username, password) nếu có thay đổi trong XAMPP của bạn.
 
 > [!NOTE]
-> **Chế độ Dự Phòng (Demo Mode)**: Nếu bạn chưa import cơ sở dữ liệu, website vẫn hoạt động bình thường nhờ cơ chế tự động Fallback nạp toàn bộ danh sách bài hát tĩnh, đồng thời lưu trữ các bài hát AI tự tạo và bản Beat Mix vào session để thuận tiện chạy thử nghiệm nhanh.
+> **Chế độ Dự Phòng (Demo Mode)**: Nếu chưa import database, website vẫn hoạt động bình thường nhờ cơ chế tự động Fallback tự làm được tích hợp sẵn để nạp toàn bộ danh sách bài hát tĩnh, đồng thời lưu trữ các bài hát AI tự tạo và bản Beat Mix vào session để thuận tiện chạy thử nghiệm nhanh.
 
 ### Bước 3: Đăng nhập Tài khoản Thử nghiệm
 Hệ thống đã có sẵn 2 tài khoản thử nghiệm với mật khẩu tương ứng:
-* **Tài khoản Admin**:
+* **Tài khoản Admin**: 
   * Email: `admin@musicai.local`
   * Mật khẩu: `admin123`
 * **Tài khoản User**:
   * Email: `user@musicai.local`
-  * Mật khẩu: `user123`
+  * Mật khẩu: `user123` 
 
 ---
 

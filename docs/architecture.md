@@ -1,179 +1,258 @@
-# Tài Liệu Thiết Kế Hệ Thống MusicAI
+# Tài Liệu Thiết Kế Hệ Thống — MusicAI
+*** Thầy có thể sử dụng để xem các sơ đồ hệ thống trên phần mềm mermaid ***
 
-Tài liệu này mô tả các sơ đồ luồng hoạt động, cấu trúc cơ sở dữ liệu và kiến trúc tổng quan của dự án MusicAI.
+> Tài liệu mô tả kiến trúc tổng thể, sơ đồ thực thể quan hệ (ERD), biểu đồ Use Case, Activity Diagram và luồng hoạt động của hệ thống MusicAI.
 
 ---
 
-## 1. Sơ đồ Thực thể Liên kết (Entity-Relationship Diagram - ERD)
+## 1. Kiến Trúc Hệ Thống (System Architecture)
 
-Sơ đồ ERD mô tả mối quan hệ giữa các bảng trong cơ sở dữ liệu MySQL:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        TRÌNH DUYỆT (Browser)                    │
+│           HTML5 / CSS3 / JavaScript (Vanilla)                   │
+│     Glassmorphism UI · Neon Green Theme · Web Audio API         │
+└────────────────────────┬────────────────────────────────────────┘
+                         │  HTTP Request / AJAX (fetch / XMLHttpRequest)
+                         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   WEB SERVER — Apache (XAMPP)                   │
+│                    PHP 8.0 · PDO · Session                      │
+│                                                                 │
+│  ┌──────────────┐  ┌───────────────┐  ┌──────────────────────┐  │
+│  │  Pages (.php)│  │  API (/api/*) │  │  Admin (/admin/*)    │  │
+│  │  index.php   │  │  auth/        │  │  dashboard.php       │  │
+│  │  music.php   │  │  music/       │  │  songs.php           │  │
+│  │  generate.php│  │  ai/          │  │  users.php           │  │
+│  │  beatmaker   │  │  beatmaker/   │  │  ai_music.php        │  │
+│  │  library.php │  │  user/        │  │  beats.php           │  │
+│  └──────────────┘  └───────────────┘  └──────────────────────┘  │
+└───────────┬─────────────────────┬───────────────────────────────┘
+            │  PDO (MySQL)        │  cURL (HTTP POST JSON)
+            ▼                     ▼
+┌───────────────────┐   ┌────────────────────────────────────────┐
+│  MySQL Database   │   │       Python AI Server (FastAPI)       │
+│  music_ai         │   │       ai-server/main.py                │
+│                   │   │       http://127.0.0.1:8000            │
+│  · users          │   │                                        │
+│  · songs          │   │  POST /generate  → Mô phỏng tạo nhạc   │
+│  · ai_songs       │   │  GET  /status    → Kiểm tra tiến độ    │
+│  · beat_mixes     │   │  GET  /health    → Kiểm tra hoạt động  │
+│  · beat_sounds    │   │                                        │
+│  · favorites      │   │  [Fallback Mode]: Nếu server AI chưa   │
+│  · listening_     │   │  khởi chạy, PHP tự động dùng file      │
+│    history        │   │  demo MP3 có sẵn trong storage/demo/   │
+└───────────────────┘   └────────────────────────────────────────┘
+```
+
+---
+
+## 2. Sơ Đồ Thực Thể Quan Hệ — ERD (Entity Relationship Diagram)
 
 ```mermaid
 erDiagram
-    USERS ||--o{ AI_SONGS : "creates"
-    USERS ||--o{ BEAT_MIXES : "saves"
-    USERS ||--o{ FAVORITES : "likes"
-    USERS ||--o{ LISTENING_HISTORY : "listens"
-    SONGS ||--o{ FAVORITES : "favorited"
-    SONGS ||--o{ LISTENING_HISTORY : "recorded"
-    
-    USERS {
+    users {
         int id PK
-        string name
-        string email UK
-        string password
+        varchar name
+        varchar email UK
+        varchar password
         enum role
-        string avatar
+        varchar avatar
         timestamp created_at
+        timestamp updated_at
     }
-    SONGS {
+
+    songs {
         int id PK
-        string title
-        string artist
-        string genre
-        string audio_file
-        string thumbnail
+        varchar title
+        varchar artist
+        varchar genre
+        varchar audio_file
+        varchar thumbnail
         int plays
         timestamp created_at
     }
-    AI_SONGS {
+
+    ai_songs {
         int id PK
         int user_id FK
         text prompt
-        string genre
-        string mood
+        varchar genre
+        varchar mood
         int duration
-        string audio_file
+        varchar audio_file
         timestamp created_at
     }
-    BEAT_SOUNDS {
+
+    beat_sounds {
         int id PK
-        string name
+        varchar name
         enum category
-        string audio_file
+        varchar audio_file
         enum status
         timestamp created_at
     }
-    BEAT_MIXES {
+
+    beat_mixes {
         int id PK
         int user_id FK
-        string name
-        json mix_data
+        varchar name
+        longtext mix_data
         timestamp created_at
     }
-    FAVORITES {
+
+    favorites {
         int id PK
         int user_id FK
         int song_id FK
         timestamp created_at
     }
-    LISTENING_HISTORY {
+
+    listening_history {
         int id PK
         int user_id FK
         int song_id FK
         timestamp listened_at
     }
+
+    users ||--o{ ai_songs : "tạo"
+    users ||--o{ beat_mixes : "lưu"
+    users ||--o{ favorites : "yêu thích"
+    users ||--o{ listening_history : "nghe"
+    songs ||--o{ favorites : "được yêu thích"
+    songs ||--o{ listening_history : "được nghe"
 ```
 
 ---
 
-## 2. Sơ đồ Ca sử dụng (Use Case Diagram)
-
-Phân chia các quyền hạn chức năng giữa **Người dùng thông thường** và **Quản trị viên (Admin)**:
+## 3. Biểu Đồ Use Case
 
 ```mermaid
 graph TD
-    User([Người dùng]) --> UC_Listen([Nghe nhạc & Tìm kiếm])
-    User --> UC_Favorite([Yêu thích bài hát])
-    User --> UC_Generate([Tạo nhạc AI])
-    User --> UC_Beatmaker([Chơi nhạc Beatmaker])
-    User --> UC_SaveMix([Lưu bản Beat Mix])
-    
-    Admin([Quản trị viên]) --> UC_Dashboard([Xem Dashboard Thống kê])
-    Admin --> UC_ManageUsers([Quản lý Thành viên CRUD])
-    Admin --> UC_ManageSongs([Quản lý Bài hát CRUD])
-    Admin --> UC_ManageAISongs([Quản lý Nhạc AI của User])
-    Admin --> UC_ManageBeats([Quản lý Beat Loops])
-    Admin --> UC_Settings([Cấu hình Website])
-    
-    Admin --> User
+    Guest["👤 Khách (Guest)"]
+    User["👤 Người Dùng (User)"]
+    Admin["👤 Quản Trị Viên (Admin)"]
+
+    subgraph MusicAI_System["🎵 Hệ Thống MusicAI"]
+        UC1["Xem trang chủ & danh sách nhạc"]
+        UC2["Nghe nhạc (Music Player)"]
+        UC3["Tìm kiếm & lọc theo thể loại"]
+        UC4["Đăng ký tài khoản"]
+        UC5["Đăng nhập"]
+        UC6["Tạo nhạc AI bằng Prompt"]
+        UC7["Lưu nhạc AI vào thư viện"]
+        UC8["Sử dụng Beatmaker Studio"]
+        UC9["Lưu bản Beat Mix"]
+        UC10["Quản lý danh sách yêu thích"]
+        UC11["Xem lịch sử nghe nhạc"]
+        UC12["Cập nhật hồ sơ & ảnh đại diện"]
+        UC13["Quản lý người dùng (CRUD)"]
+        UC14["Upload bài hát mới"]
+        UC15["Quản lý nhạc AI & Beat Mix"]
+        UC16["Cấu hình hệ thống"]
+    end
+
+    Guest --> UC1
+    Guest --> UC2
+    Guest --> UC3
+    Guest --> UC4
+    Guest --> UC5
+
+    User --> UC1
+    User --> UC2
+    User --> UC3
+    User --> UC6
+    User --> UC7
+    User --> UC8
+    User --> UC9
+    User --> UC10
+    User --> UC11
+    User --> UC12
+
+    Admin --> UC13
+    Admin --> UC14
+    Admin --> UC15
+    Admin --> UC16
+    Admin --> UC1
+    Admin --> UC2
 ```
 
 ---
 
-## 3. Sơ đồ Luồng hoạt động Tạo nhạc AI (Activity Diagram)
-
-Mô tả luồng xử lý từ khi người dùng gửi mô tả prompt cho đến khi nhận được tệp nhạc AI từ server (có cơ chế dự phòng tự động khi AI Server offline):
+## 4. Activity Diagram — Luồng Tạo Nhạc AI
 
 ```mermaid
-stateDiagram-v2
-    [*] --> RequestForm: User nhập prompt, thể loại, thời lượng
-    RequestForm --> SendRequest: Nhấp nút "Tạo nhạc AI"
-    SendRequest --> CallServer: PHP API chuyển tiếp request tới Python AI Server
-    CallServer --> CheckServerStatus: Python Server hoạt động?
-    
-    state CheckServerStatus <<choice>>
-    CheckServerStatus --> ActiveServer: Hoạt động (Phản hồi Task ID)
-    CheckServerStatus --> InactiveServer: Ngoại tuyến (Tự sinh Mock Task ID)
-    
-    ActiveServer --> PollingStatus: Client JS gửi yêu cầu kiểm tra mỗi 1 giây
-    InactiveServer --> SimulationCompleted: Tự động hoàn thành ngay (Mock Loop)
-    
-    PollingStatus --> IsCompleted: Trạng thái trả về "completed"?
-    
-    state IsCompleted <<choice>>
-    IsCompleted --> PollingStatus: Chưa (Đang xử lý)
-    IsCompleted --> SimulationCompleted: Rồi
-    
-    SimulationCompleted --> DisplayPlayer: Hiện trình phát nghe thử kết quả
-    DisplayPlayer --> SaveToLibrary: Nhấp nút "Lưu vào Thư viện"
-    SaveToLibrary --> Saved: Lưu vào DB / Session Thư viện
-    Saved --> [*]
+flowchart TD
+    A([Bắt đầu]) --> B{Đã đăng nhập?}
+    B -- Chưa --> C[Chuyển hướng đến trang Đăng nhập]
+    C --> D([Kết thúc])
+    B -- Rồi --> E[Hiển thị trang generate.php]
+    E --> F[Người dùng nhập Prompt, Genre, Mood, Duration]
+    F --> G[Nhấn nút 'Tạo Nhạc AI']
+    G --> H[POST → api/ai/generate_music.php]
+    H --> I{Python AI Server\nđang chạy?}
+    I -- Có --> J[Gửi cURL request tới\nhttp://127.0.0.1:8000/generate]
+    J --> K[Nhận task_id từ AI Server]
+    I -- Không --> L[Chọn file demo MP3 ngẫu nhiên\ntheo genre từ storage/demo/]
+    L --> M[Tạo mock_task_id lưu vào Session]
+    K --> N[JS polling → api/ai/check_status.php]
+    M --> N
+    N --> O{Task đã\nhoàn thành?}
+    O -- Chưa --> P[Hiển thị loading + đếm ngược]
+    P --> N
+    O -- Xong --> Q[Hiển thị Audio Player để nghe thử]
+    Q --> R{Người dùng\nmuốn lưu?}
+    R -- Không --> S([Kết thúc / Tạo lại])
+    R -- Có --> T[POST → api/ai/save_ai_song.php]
+    T --> U{DB kết nối\nđược?}
+    U -- Có --> V[INSERT INTO ai_songs]
+    U -- Không --> W[Lưu vào Session demo_ai_songs]
+    V --> X[Thông báo lưu thành công]
+    W --> X
+    X --> Y([Kết thúc])
 ```
 
 ---
 
-## 4. Sơ đồ Kiến trúc Hệ thống (Architecture Diagram)
-
-Mô tả kiến trúc **3 tầng** của hệ thống: Tầng Giao diện (Client), Tầng Xử lý (Server), và Tầng Dữ liệu & AI. Các thành phần giao tiếp qua REST API trả JSON, PDO cho Database, và cURL cho AI Server.
+## 5. Activity Diagram — Luồng Nghe Nhạc & Tương Tác
 
 ```mermaid
-graph TD
-    subgraph TIER1["🖥️ TẦNG 1: CLIENT (Frontend)"]
-        Browser["<b>Trình duyệt Web</b><br/>HTML5 / CSS3 / JavaScript<br/>(Glassmorphism UI)"]
-    end
-
-    subgraph TIER2["⚙️ TẦNG 2: SERVER (Backend)"]
-        PHP["<b>Apache Server</b><br/>PHP Backend<br/>(PDO · cURL · Session)"]
-        AIServer["<b>AI Server</b><br/>Python FastAPI<br/>:8000"]
-    end
-
-    subgraph TIER3["🗄️ TẦNG 3: DỮ LIỆU"]
-        MySQL[("<b>MySQL Database</b><br/>7 bảng dữ liệu")]
-        Storage["<b>File Storage</b><br/>/storage/<br/>(audio · beats · demo)"]
-    end
-
-    Browser -- "AJAX / Fetch API → JSON" --> PHP
-    PHP -- "HTML Response" --> Browser
-
-    PHP -- "PDO Connection" --> MySQL
-    PHP -- "R/W Files" --> Storage
-
-    PHP -- "cURL POST Request" --> AIServer
-    AIServer -- "JSON (task_id · status · file)" --> PHP
-
-    AIServer -- "Đọc file demo" --> Storage
+flowchart TD
+    A([Bắt đầu]) --> B[Người dùng truy cập music.php]
+    B --> C[Tải danh sách bài hát từ DB / Fallback]
+    C --> D[Người dùng chọn bài hát]
+    D --> E[Music Player khởi động ở thanh dưới]
+    E --> F[Ghi lịch sử nghe → listening_history]
+    F --> G[Tăng lượt plays của bài hát]
+    G --> H{Người dùng\nthao tác?}
+    H -- Yêu thích --> I[POST → api/music/favorite.php]
+    I --> J[Toggle INSERT / DELETE favorites]
+    H -- Xem lịch sử --> K[Truy cập history.php]
+    H -- Tiếp tục nghe --> H
+    H -- Dừng --> L([Kết thúc])
 ```
 
-### Luồng xử lý Request tổng quát
+---
+
+## 6. Activity Diagram — Luồng Beatmaker Studio
 
 ```mermaid
-flowchart LR
-    A([👤 User Request]) --> B[PHP Backend]
-    B --> C{Loại xử lý}
-    C -- "Truy vấn dữ liệu" --> D[(MySQL DB)]
-    C -- "Tạo nhạc AI" --> E[Python FastAPI]
-    D --> F[JSON Response]
-    E --> F
-    F --> G([✅ Client nhận kết quả])
+flowchart TD
+    A([Bắt đầu]) --> B[Truy cập beatmaker.php]
+    B --> C[Tải danh sách beat_sounds từ DB / Fallback]
+    C --> D[Hiển thị 5 kênh: Drums, Bass, Melody, Vocals, Effects]
+    D --> E[Người dùng kéo Sound Loop vào slot nhân vật]
+    E --> F[Web Audio API phát âm thanh theo vòng lặp]
+    F --> G{Thêm / xóa\nloop khác?}
+    G -- Có --> E
+    G -- Không --> H{Muốn lưu\nbản Mix?}
+    H -- Không --> I([Kết thúc])
+    H -- Có --> J{Đã đăng nhập?}
+    J -- Chưa --> K[Yêu cầu đăng nhập]
+    K --> I
+    J -- Rồi --> L[Nhập tên bản Mix]
+    L --> M[POST → api/beatmaker/save_mix.php]
+    M --> N[INSERT INTO beat_mixes với JSON mix_data]
+    N --> O[Thông báo lưu thành công]
+    O --> I([Kết thúc])
 ```
