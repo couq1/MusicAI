@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 03, 2026 lúc 07:17 PM
+-- Thời gian đã tạo: Th7 04, 2026 lúc 07:11 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -80,26 +80,31 @@ CREATE TABLE `beat_sounds` (
 --
 
 INSERT INTO `beat_sounds` (`id`, `name`, `category`, `audio_file`, `status`, `created_at`) VALUES
-(1, 'Acoustic Drums', 'drums', 'storage/beats/drums1.mp3', 'active', '2026-06-21 16:08:13'),
-(2, 'Cyber Drums', 'drums', 'storage/beats/drums2.mp3', 'active', '2026-06-21 16:08:13'),
-(3, 'Trap Drums', 'drums', 'storage/beats/drums3.mp3', 'active', '2026-06-21 16:08:13'),
-(4, 'HipHop Drums', 'drums', 'storage/beats/drums4.mp3', 'active', '2026-06-21 16:08:13'),
-(5, 'Deep Bassline', 'bass', 'storage/beats/bass1.mp3', 'active', '2026-06-21 16:08:13'),
-(6, 'Synth Sub Bass', 'bass', 'storage/beats/bass2.mp3', 'active', '2026-06-21 16:08:13'),
-(7, 'Deep Bassline', 'bass', 'storage/beats/bass3.mp3', 'active', '2026-06-21 16:08:13'),
-(8, 'Synth Sub Bass', 'bass', 'storage/beats/bass4.mp3', 'active', '2026-06-21 16:08:13'),
-(9, 'Synth Leads', 'melody', 'storage/beats/melody1.mp3', 'active', '2026-06-21 16:08:13'),
-(10, 'Lofi Guitar Pick', 'melody', 'storage/beats/melody2.mp3', 'active', '2026-06-21 16:08:13'),
-(11, 'Synth Leads', 'melody', 'storage/beats/melody3.mp3', 'active', '2026-06-21 16:08:13'),
-(12, 'Lofi Guitar Pick', 'melody', 'storage/beats/melody4.mp3', 'active', '2026-06-21 16:08:13'),
-(13, 'Choir Pad Vocal', 'vocals', 'storage/beats/vocals1.mp3', 'active', '2026-06-21 16:08:13'),
-(14, 'Melodic Chant', 'vocals', 'storage/beats/vocals2.mp3', 'active', '2026-06-21 16:08:13'),
-(15, 'Choir Pad Vocal', 'vocals', 'storage/beats/vocals3.mp3', 'active', '2026-06-21 16:08:13'),
-(16, 'Melodic Chant', 'vocals', 'storage/beats/vocals4.mp3', 'active', '2026-06-21 16:08:13'),
-(17, 'Space FX Riser', 'effects', 'storage/beats/effects1.mp3', 'active', '2026-06-21 16:08:13'),
-(18, 'Vinyl Crackles', 'effects', 'storage/beats/effects2.mp3', 'active', '2026-06-21 16:08:13'),
-(19, 'Space FX Riser', 'effects', 'storage/beats/effects3.mp3', 'active', '2026-06-21 16:08:13'),
-(20, 'Vinyl Crackles', 'effects', 'storage/beats/effects4.mp3', 'active', '2026-06-21 16:08:13');
+(1, ' Drums1', 'drums', 'storage/beats/drums1.mp3', 'active', '2026-06-21 16:08:13'),
+(2, ' Drums2', 'drums', 'storage/beats/drums2.mp3', 'active', '2026-06-21 16:08:13'),
+(3, ' Drums3', 'drums', 'storage/beats/drums3.mp3', 'active', '2026-06-21 16:08:13'),
+(4, ' Drums4', 'drums', 'storage/beats/drums4.mp3', 'active', '2026-06-21 16:08:13'),
+(5, 'Drums5', 'drums', 'storage/beats/drums5.mp3', 'active', '2026-06-21 16:08:13'),
+(6, 'Bass1', 'bass', 'storage/beats/bass1.mp3', 'active', '2026-06-21 16:08:13'),
+(7, 'Bass2', 'bass', 'storage/beats/bass2.mp3', 'active', '2026-06-21 16:08:13'),
+(8, 'Bass3', 'bass', 'storage/beats/bass3.mp3', 'active', '2026-06-21 16:08:13'),
+(9, 'Bass4', 'bass', 'storage/beats/bass4.mp3', 'active', '2026-06-21 16:08:13'),
+(10, 'Bass5', 'bass', 'storage/beats/bass5.mp3', 'active', '2026-06-21 16:08:13'),
+(11, 'Melody1', 'melody', 'storage/beats/melody1.mp3', 'active', '2026-06-21 16:08:13'),
+(12, 'Melody2', 'melody', 'storage/beats/melody2.mp3', 'active', '2026-06-21 16:08:13'),
+(13, 'Melody3', 'melody', 'storage/beats/melody3.mp3', 'active', '2026-06-21 16:08:13'),
+(14, 'Melody4', 'melody', 'storage/beats/melody4.mp3', 'active', '2026-06-21 16:08:13'),
+(15, 'Melody5', 'melody', 'storage/beats/melody5.mp3', 'active', '2026-06-21 16:08:13'),
+(16, 'Vocals1', 'vocals', 'storage/beats/vocals1.mp3', 'active', '2026-06-21 16:08:13'),
+(17, 'Vocals2', 'vocals', 'storage/beats/vocals2.mp3', 'active', '2026-06-21 16:08:13'),
+(18, 'Vocals3', 'vocals', 'storage/beats/vocals3.mp3', 'active', '2026-06-21 16:08:13'),
+(19, 'Vocals4', 'vocals', 'storage/beats/vocals4.mp3', 'active', '2026-06-21 16:08:13'),
+(20, 'Vocals5', 'vocals', 'storage/beats/vocals5.mp3', 'active', '2026-06-21 16:08:13'),
+(21, 'Effects1', 'effects', 'storage/beats/effects1.mp3', 'active', '2026-06-21 16:08:13'),
+(22, 'Effects2', 'effects', 'storage/beats/effects2.mp3', 'active', '2026-06-21 16:08:13'),
+(23, 'Effects3', 'effects', 'storage/beats/effects3.mp3', 'active', '2026-06-21 16:08:13'),
+(24, 'Effects4', 'effects', 'storage/beats/effects4.mp3', 'active', '2026-06-21 16:08:13'),
+(25, 'Effects5', 'effects', 'storage/beats/effects5.mp3', 'active', '2026-06-21 16:08:13');
 
 -- --------------------------------------------------------
 
@@ -260,8 +265,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `avatar`, `created_at`, `updated_at`) VALUES
-(1, 'Quản Trị Viên', 'admin@musicai.local', '$2y$10$BCuIZM3n0DbXHITbPcYKOu0xLglBcClfv5lUweFBc2Fr4mXAVvk6O', 'admin', 'assets/images/avatar.jpg', '2026-06-21 16:08:13', '2026-06-26 11:14:52'),
-(2, 'Demo User Test', 'user@musicai.local', '$2y$10$g75U0sjf0gkvGGOjW2StGu4Dj/KNsNWtndfaGA3HZVJdlx5pfsL06', 'admin', 'assets/images/avatar.jpg', '2026-06-21 16:08:13', '2026-06-26 11:13:41'),
+(1, 'Quản Trị Viên', 'admin@musicai.local', '$2y$10$BCuIZM3n0DbXHITbPcYKOu0xLglBcClfv5lUweFBc2Fr4mXAVvk6O', 'admin', 'storage/avatars/user_1_1783137603.png', '2026-06-21 16:08:13', '2026-07-04 04:59:40'),
+(2, 'Demo User Test', 'user@musicai.local', '$2y$10$g75U0sjf0gkvGGOjW2StGu4Dj/KNsNWtndfaGA3HZVJdlx5pfsL06', 'user', 'storage/avatars/user_2_1783140887.png', '2026-06-21 16:08:13', '2026-07-04 04:55:27'),
 (3, 'LE ANH QUOC', 'lequoc0305@gmail.com', '$2y$10$N8eDEz8WnEi0zVpAdHrn9eo1Gj9TgjE0URjkhWRAswmE5s1a0/pBi', 'user', 'storage/avatars/user_3_1782398471.png', '2026-06-25 14:29:11', '2026-06-25 14:41:11');
 
 --
@@ -337,7 +342,7 @@ ALTER TABLE `beat_mixes`
 -- AUTO_INCREMENT cho bảng `beat_sounds`
 --
 ALTER TABLE `beat_sounds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `favorites`

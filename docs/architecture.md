@@ -135,11 +135,45 @@ stateDiagram-v2
 
 ## 4. Sơ đồ Kiến trúc Hệ thống (Architecture Diagram)
 
-Mô tả luồng tương tác giữa Trình duyệt người dùng, Máy chủ Apache Web (PHP) và Máy chủ xử lý AI (Python):
+Mô tả kiến trúc **3 tầng** của hệ thống: Tầng Giao diện (Client), Tầng Xử lý (Server), và Tầng Dữ liệu & AI. Các thành phần giao tiếp qua REST API trả JSON, PDO cho Database, và cURL cho AI Server.
 
 ```mermaid
-graph LR
-    Browser[Trình duyệt Web - Frontend] -- "HTML/CSS/JS (Fetch AJAX)" --> PHP[Apache Server - PHP Backend]
-    PHP -- "Kết nối PDO" --> MySQL[(Cơ sở dữ liệu MySQL)]
-    PHP -- "Gửi cURL Request" --> Python[Python AI Server - FastAPI]
+graph TD
+    subgraph TIER1["🖥️ TẦNG 1: CLIENT (Frontend)"]
+        Browser["<b>Trình duyệt Web</b><br/>HTML5 / CSS3 / JavaScript<br/>(Glassmorphism UI)"]
+    end
+
+    subgraph TIER2["⚙️ TẦNG 2: SERVER (Backend)"]
+        PHP["<b>Apache Server</b><br/>PHP Backend<br/>(PDO · cURL · Session)"]
+        AIServer["<b>AI Server</b><br/>Python FastAPI<br/>:8000"]
+    end
+
+    subgraph TIER3["🗄️ TẦNG 3: DỮ LIỆU"]
+        MySQL[("<b>MySQL Database</b><br/>7 bảng dữ liệu")]
+        Storage["<b>File Storage</b><br/>/storage/<br/>(audio · beats · demo)"]
+    end
+
+    Browser -- "AJAX / Fetch API → JSON" --> PHP
+    PHP -- "HTML Response" --> Browser
+
+    PHP -- "PDO Connection" --> MySQL
+    PHP -- "R/W Files" --> Storage
+
+    PHP -- "cURL POST Request" --> AIServer
+    AIServer -- "JSON (task_id · status · file)" --> PHP
+
+    AIServer -- "Đọc file demo" --> Storage
+```
+
+### Luồng xử lý Request tổng quát
+
+```mermaid
+flowchart LR
+    A([👤 User Request]) --> B[PHP Backend]
+    B --> C{Loại xử lý}
+    C -- "Truy vấn dữ liệu" --> D[(MySQL DB)]
+    C -- "Tạo nhạc AI" --> E[Python FastAPI]
+    D --> F[JSON Response]
+    E --> F
+    F --> G([✅ Client nhận kết quả])
 ```

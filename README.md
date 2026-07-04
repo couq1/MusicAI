@@ -16,8 +16,7 @@ MusicAI/
 │   ├── users.php           # Quản lý thành viên (CRUD)
 │   ├── songs.php           # Quản lý bài hát gốc hệ thống (Upload file cứng)
 │   ├── ai_music.php        # Quản lý nhạc do AI của user tạo ra
-│   ├── beats.php           # Quản lý beat sound loop của Beatmaker
-│   └── settings.php        # Cấu hình website toàn cục
+│   └── beats.php           # Quản lý beat sound loop của Beatmaker
 ├── ai-server/              # Máy chủ AI mô phỏng (FastAPI)
 │   └── main.py             # File khởi chạy FastAPI mock
 ├── api/                    # Hệ thống API backend trả về JSON
@@ -59,6 +58,7 @@ MusicAI/
 ├── history.php             # Lịch sử nghe nhạc gần đây
 ├── login.php               # Giao diện Đăng nhập
 ├── register.php            # Giao diện Đăng ký
+├── settings.php            # Cài đặt tài khoản
 └── logout.php              # Xử lý Đăng xuất
 ```
 
