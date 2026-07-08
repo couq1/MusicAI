@@ -45,7 +45,7 @@ CREATE TABLE `ai_songs` (
 INSERT INTO `ai_songs` (`id`, `user_id`, `prompt`, `genre`, `mood`, `duration`, `audio_file`, `created_at`) VALUES
 (1, 3, '123', 'Lofi', 'Relax', 15, 'storage/demo/lofi3.mp3', '2026-06-25 16:54:14'),
 (2, 1, '123', 'Lofi', 'Relax', 30, 'storage/demo/lofi2.mp3', '2026-06-26 11:02:55'),
-(3, 1, 'hãy tạo cho tôi một bài nhạc chill nhuingw hiphop tí', 'Lofi', 'Energetic', 60, 'storage/demo/lofi2.mp3', '2026-07-04 13:01:27'),
+(3, 1, 'hãy tạo cho tôi một bài nhạc chill nhưng hiphop', 'Lofi', 'Energetic', 60, 'storage/demo/lofi2.mp3', '2026-07-04 13:01:27'),
 (4, 1, 'èdefewr', 'Ambient', 'Relax', 30, 'storage/demo/ambient1.mp3', '2026-07-04 13:03:38'),
 (5, 1, 'một bầu trời xanh', 'EDM', 'Dark', 30, 'storage/demo/edm2.mp3', '2026-07-04 13:05:09'),
 (6, 1, 'một bầu trời xanh', 'EDM', 'Sad', 30, 'storage/demo/edm3.mp3', '2026-07-04 13:05:23'),

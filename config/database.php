@@ -1,9 +1,15 @@
 <?php
-// Cấu hình Database kết nối bằng PDO
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'music_ai');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+//  (XamPP)
+// define('DB_HOST', 'localhost');
+// define('DB_NAME', 'music_ai');
+// define('DB_USER', 'root');
+// define('DB_PASS', '');
+
+// (InfinityFree)
+define('DB_HOST', 'sql300.infinityfree.com');
+define('DB_NAME', 'if0_42304099_musicai');
+define('DB_USER', 'if0_42304099');
+define('DB_PASS', 'Websitezz123');
 
 $conn = null;
 $db_connected = false;

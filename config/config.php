@@ -16,7 +16,8 @@ if (file_exists($settings_file)) {
 }
 
 define('SITE_NAME', $site_name);
-define('BASE_URL', '/MusicAI/'); // Đường dẫn cơ sở chạy trên XAMPP (mặc định thư mục htdocs/MusicAI)
+// define('BASE_URL', '/MusicAI/'); // Đường dẫn cơ sở chạy trên XAMPP (mặc định thư mục htdocs/MusicAI)
+define('BASE_URL', '/');
 define('STORAGE_PATH', dirname(__DIR__) . '/storage/');
 define('DEFAULT_AVATAR', 'assets/images/default-avatar.png');
 
